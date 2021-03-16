@@ -8,9 +8,7 @@
 
 ## 使用步骤
 
-Ⅰ. **首先 fork 本项目到自己的仓库**![fork](/img/1.png)
-
-Ⅱ. **进入自己 fork 的仓库，点击 Settings-> Secrets-> New repository secret，它们将作为配置项，在应用启动时传入程序。**
+Ⅰ. **点击 Settings-> Secrets-> New repository secret，它们将作为配置项，在应用启动时传入程序。**
 
 **例如下图。添加 其中1 个 Secrets，其名称为ID，值为一卡通号**
 
@@ -28,5 +26,5 @@
 | KU         | 酷推的Skey（可选）可用于qq推送上报通知。学习链接https://cp.xuthus.cc/ |
 | SERVERCHAN | 新版server酱的Skey（可选）可用于微信推送上报通知。学习链接https://sct.ftqq.com/ |
 
-Ⅲ. **如果需要修改上报时间，修改.github/workflows/auto_temperature.yml**
+. **如果需要修改上报时间，修改.github/workflows/auto_temperature.yml**
 ![cron](/img/3.png)
