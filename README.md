@@ -1,6 +1,4 @@
 # SEU_Action_Report
-![Stars](https://img.shields.io/github/stars/Waikkii/SEU_Daily_Update.svg)
-![Forks](https://img.shields.io/github/forks/Waikkii/SEU_Daily_Update.svg)
 
 **利用GitHub的action进行健康上报**
 
