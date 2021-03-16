@@ -131,6 +131,7 @@ if __name__ == '__main__':
     t = 30
 
     msg = '体温上报' + '\n\n'
+    print("main")
     main()
     while error:
         error = False
@@ -143,9 +144,11 @@ if __name__ == '__main__':
     if error:
         subject = '体温上报\t失败'
         server_post(subject, msg, serverchan_sckey)
-        kutui_post(subject, msg, kutui_key)
+        print("推送成功，体温上报失败")
+        #kutui_post(subject, msg, kutui_key)
 
     else:
         subject = '体温上报\t成功'
         server_post(subject, msg, serverchan_sckey)
-        kutui_post(subject, msg, kutui_key)
+        print("推送成功，体温上报成功")
+        #kutui_post(subject, msg, kutui_key)
