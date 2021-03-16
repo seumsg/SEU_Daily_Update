@@ -1,6 +1,6 @@
 # SEU_Action_Report
-![Stars](https://img.shields.io/github/stars/quzard/SEU_Action_Report.svg)
-![Forks](https://img.shields.io/github/forks/quzard/SEU_Action_Report.svg)
+![Stars](https://img.shields.io/github/stars/Waikkii/SEU_Daily_Update.svg)
+![Forks](https://img.shields.io/github/forks/Waikkii/SEU_Daily_Update.svg)
 
 **利用GitHub的action进行健康上报**
 
@@ -32,6 +32,3 @@
 
 Ⅲ. **如果需要修改上报时间，修改.github/workflows/auto_temperature.yml**
 ![cron](/img/3.png)
-
-## Stargazers over time
-[![Stargazers over time](https://starchart.cc/Quzard/SEU_Action_Report.svg)](https://starchart.cc/Quzard/SEU_Action_Report)
