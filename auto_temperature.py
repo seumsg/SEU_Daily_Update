@@ -122,7 +122,8 @@ if __name__ == '__main__':
         serverchan_sckey = os.environ["SERVERCHAN"]
     else:
         serverchan_sckey = ""
-
+    
+    print("开始随机计时")
     time.sleep(random.randint(0, 300))
     
     
