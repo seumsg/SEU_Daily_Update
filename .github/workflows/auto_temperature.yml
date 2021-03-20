@@ -28,6 +28,7 @@ jobs:
         NAME: ${{ secrets.NAME }}
         KU: ${{ secrets.KU }}
         SERVERCHAN: ${{ secrets.SERVERCHAN }}
+        WEIXINKEY: ${{ secrets.WEIXINKEY }}
       run: |
         bash Init_Building_Dependencies.sh
         python3 auto_temperature.py
