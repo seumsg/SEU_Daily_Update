@@ -185,6 +185,7 @@ if __name__ == '__main__':
             "content": "# SEU每日健康上报\n"
                        ">时间:<font color=\"comment\">" + timetext + "</font> \n"
                        ">状态:<font color=\"warning\">" + condition + "</font> \n"
+                       ">Information:<font color=\"comment\">" + errortext + "</font>"
         }
         subject = '体温上报成功！'
         xuyuantu_bot_markdown(subject, content_success, weixin_botkey)
