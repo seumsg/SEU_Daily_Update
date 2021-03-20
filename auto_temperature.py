@@ -23,13 +23,13 @@ def main():
     global name
     global teacher
     global condition
-    global time
+    global timetext
     global errortext
     try:
         date_time = datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")
         print("时间:", date_time)
         msg += "时间:\t" + str(date_time) + '\n\n'
-        time = str(date_time)
+        timetext = str(date_time)
 
         driver = webdriver.Chrome(executable_path='chromedriver', chrome_options=chrome_options)
 
@@ -160,13 +160,13 @@ if __name__ == '__main__':
             break
     content_fail = {
         "content": "# SEU每日健康上报\n"
-                   ">时间:<font color=\"comment\">" + time + "</font> \n"
+                   ">时间:<font color=\"comment\">" + timetext + "</font> \n"
                    ">状态:<font color=\"warning\">" + condition + "</font> \n"
                    ">ERROR:<font color=\"comment\">" + errortext + "</font>"
     }
     content_success = {
         "content": "# SEU每日健康上报\n"
-                   ">时间:<font color=\"comment\">" + time + "</font> \n"
+                   ">时间:<font color=\"comment\">" + timetext + "</font> \n"
                    ">状态:<font color=\"warning\">" + condition + "</font> \n"
     }
 
