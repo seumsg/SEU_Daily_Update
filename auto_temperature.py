@@ -22,10 +22,14 @@ def main():
     global password
     global name
     global teacher
+    global condition
+    global time
+    global errortext
     try:
         date_time = datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")
         print("时间:", date_time)
         msg += "时间:\t" + str(date_time) + '\n\n'
+        time = str(date_time)
 
         driver = webdriver.Chrome(executable_path='chromedriver', chrome_options=chrome_options)
 
@@ -45,6 +49,8 @@ def main():
         if not checkUrl.startswith("http://ehall.seu.edu.cn/"):
             print(name + '\t' + username + '\t' + password + '\t登录失败')
             msg += name + '\t' + username + '\t' + password + '\t登录失败\n\n'
+            condition = '失败'
+            errortext = name + '\t' + username + '\t' + password + '\t登录失败'
             error = True
             driver.quit()
             return
@@ -56,12 +62,16 @@ def main():
         if '今日已填报！' in driver.page_source:
             print(name + '\t' + '今日已填报！')
             msg += name + '\t' + '今日已填报！' + '\n\n'
+            condition = '失败'
+            errortext = name + '\t' + '今日已填报！'
             driver.quit()
             return
 
         elif '每日健康申报截止时间15:00' in driver.page_source:
             print(name + '\t' + '每日健康申报截止时间15:00')
             msg += name + '\t' + '每日健康申报截止时间15:00' + '\n\n'
+            condition = '失败'
+            errortext = name + '\t' + '每日健康申报截止时间15:00'
             driver.quit()
             return
 
@@ -86,12 +96,15 @@ def main():
         driver.find_element_by_xpath('/html/body/div[60]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
         print(name + '\t体温上报成功')
         msg += name + '\t体温上报成功' + '\n\n'
+        condition = '成功'
         driver.quit()
         return
 
     except Exception as e:
         msg += name + '\t' + username + '\t' + password + '\t体温上报失败' + '\n\n' + str(e) + '\n\n'
         print(name + '\t' + username + '\t' + password + '\t体温上报失败' + '\n' + str(e))
+        condition = '失败'
+        errortext = name + '\t' + username + '\t' + password + '\t体温上报失败\t' + str(e)
         error = True
         driver.quit()
         return
@@ -122,6 +135,11 @@ if __name__ == '__main__':
         serverchan_sckey = os.environ["SERVERCHAN"]
     else:
         serverchan_sckey = ""
+        
+    if "WEIXINKEY" in os.environ:
+        weixin_botkey = os.environ["WEIXINKEY"]
+    else:
+        weixin_botkey = ""
     
     print("开始随机计时")
     time.sleep(random.randint(0, 300))
@@ -140,15 +158,28 @@ if __name__ == '__main__':
         main()
         if t > 80:
             break
+    content_fail = {
+        "content": "# SEU每日健康上报\n"
+                   ">时间:<font color=\"comment\">" + time + "</font> \n"
+                   ">状态:<font color=\"warning\">" + condition + "</font> \n"
+                   ">ERROR:<font color=\"comment\">" + errortext + "</font>"
+    }
+    content_success = {
+        "content": "# SEU每日健康上报\n"
+                   ">时间:<font color=\"comment\">" + time + "</font> \n"
+                   ">状态:<font color=\"warning\">" + condition + "</font> \n"
+    }
 
     if error:
-        subject = '体温上报\t失败'
+        subject = '体温上报失败！'
+        xuyuantu_bot_markdown(subject, content_fail, weixin_botkey)
         server_post(subject, msg, serverchan_sckey)
         print("推送成功，体温上报失败")
         #kutui_post(subject, msg, kutui_key)
 
     else:
-        subject = '体温上报\t成功'
+        subject = '体温上报成功！'
+        xuyuantu_bot_markdown(subject, content_success, weixin_botkey)
         server_post(subject, msg, serverchan_sckey)
         print("推送成功，体温上报成功")
         #kutui_post(subject, msg, kutui_key)
