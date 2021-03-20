@@ -12,5 +12,5 @@ def kutui_post(Subject, Message, Kutui_key):
 
 def xuyuantu_bot_markdown(Subject, Message, Botkey):
     url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=' + Botkey
-    markdown = {'msgtype': Subject, 'markdown': Message}
+    markdown = {'msgtype': markdown, 'markdown': Message}
     r = requests.post(url, json=markdown)
