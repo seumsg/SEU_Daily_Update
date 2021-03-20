@@ -158,12 +158,7 @@ if __name__ == '__main__':
         main()
         if t > 80:
             break
-    content_fail = {
-        "content": "# SEU每日健康上报\n"
-                   ">时间:<font color=\"comment\">" + timetext + "</font> \n"
-                   ">状态:<font color=\"warning\">" + condition + "</font> \n"
-                   ">ERROR:<font color=\"comment\">" + errortext + "</font>"
-    }
+
     content_success = {
         "content": "# SEU每日健康上报\n"
                    ">时间:<font color=\"comment\">" + timetext + "</font> \n"
@@ -171,6 +166,13 @@ if __name__ == '__main__':
     }
 
     if error:
+        condition = '失败'
+        content_fail = {
+            "content": "# SEU每日健康上报\n"
+                       ">时间:<font color=\"comment\">" + timetext + "</font> \n"
+                       ">状态:<font color=\"warning\">" + condition + "</font> \n"
+                       ">ERROR:<font color=\"comment\">" + errortext + "</font>"
+        }
         subject = '体温上报失败！'
         xuyuantu_bot_markdown(subject, content_fail, weixin_botkey)
         server_post(subject, msg, serverchan_sckey)
@@ -178,6 +180,12 @@ if __name__ == '__main__':
         #kutui_post(subject, msg, kutui_key)
 
     else:
+        condition = '成功'
+        content_success = {
+            "content": "# SEU每日健康上报\n"
+                       ">时间:<font color=\"comment\">" + timetext + "</font> \n"
+                       ">状态:<font color=\"warning\">" + condition + "</font> \n"
+        }
         subject = '体温上报成功！'
         xuyuantu_bot_markdown(subject, content_success, weixin_botkey)
         server_post(subject, msg, serverchan_sckey)
