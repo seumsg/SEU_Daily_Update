@@ -30,7 +30,7 @@ def main():
         print("时间:", date_time)
         msg += "时间:\t" + str(date_time) + '\n\n'
         timetext = str(date_time)
-
+        errortext = ''
         driver = webdriver.Chrome(executable_path='chromedriver', chrome_options=chrome_options)
 
         url = "http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/index.do?t_s=1583641506865#/dailyReport"
