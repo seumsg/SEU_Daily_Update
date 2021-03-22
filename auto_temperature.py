@@ -174,7 +174,7 @@ if __name__ == '__main__':
                        ">ERROR:<font color=\"comment\">" + errortext + "</font>"
         }
         subject = '体温上报失败！'
-        xuyuantu_bot_markdown(subject, content_fail, weixin_botkey)
+        #xuyuantu_bot_markdown(subject, content_fail, weixin_botkey)
         server_post(subject, msg, serverchan_sckey)
         print("推送成功，体温上报失败")
         #kutui_post(subject, msg, kutui_key)
@@ -188,7 +188,7 @@ if __name__ == '__main__':
                        ">Information:<font color=\"comment\">" + errortext + "</font>"
         }
         subject = '体温上报成功！'
-        xuyuantu_bot_markdown(subject, content_success, weixin_botkey)
+        #xuyuantu_bot_markdown(subject, content_success, weixin_botkey)
         server_post(subject, msg, serverchan_sckey)
         print("推送成功，体温上报成功")
         #kutui_post(subject, msg, kutui_key)
