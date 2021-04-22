@@ -6,6 +6,10 @@ def server_post(Subject, Message, Sckey):
     d = {'title': Subject, 'desp': Message}
     r = requests.post(url, data=d)
 
+def bark_post(Subject, Message, Sckey):
+    url = 'https://api.day.app/' + Sckey + '/' + Subject + '/' + Message
+    r = requests.get(url)
+
 def kutui_post(Subject, Message, Kutui_key):
     url = 'https://push.xuthus.cc/send/' + Kutui_key + '?c=' + Subject + '\n\n' + Message
     r = requests.post(url)
