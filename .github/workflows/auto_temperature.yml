@@ -28,6 +28,7 @@ jobs:
         NAME: ${{ secrets.NAME }}
         KU: ${{ secrets.KU }}
         SERVERCHAN: ${{ secrets.SERVERCHAN }}
+        BARKKEY: ${{ secrets.BARKKEY }}
         WEIXINKEY: ${{ secrets.WEIXINKEY }}
       run: |
         bash Init_Building_Dependencies.sh
