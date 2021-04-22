@@ -136,6 +136,11 @@ if __name__ == '__main__':
     else:
         serverchan_sckey = ""
         
+    if "BARKKEY" in os.environ:
+        back_key = os.environ["BARKKEY"]
+    else:
+        back_key = ""
+        
     if "WEIXINKEY" in os.environ:
         weixin_botkey = os.environ["WEIXINKEY"]
     else:
@@ -175,7 +180,7 @@ if __name__ == '__main__':
         }
         subject = '体温上报失败！'
         #xuyuantu_bot_markdown(subject, content_fail, weixin_botkey)
-        bark_post(subject, msg, serverchan_sckey)
+        bark_post(subject, msg, back_key)
         print("推送成功，体温上报失败")
         #kutui_post(subject, msg, kutui_key)
 
@@ -189,6 +194,6 @@ if __name__ == '__main__':
         }
         subject = '体温上报成功！'
         #xuyuantu_bot_markdown(subject, content_success, weixin_botkey)
-        bark_post(subject, msg, serverchan_sckey)
+        bark_post(subject, msg, back_key)
         print("推送成功，体温上报成功")
         #kutui_post(subject, msg, kutui_key)
