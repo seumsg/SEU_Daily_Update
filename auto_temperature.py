@@ -105,7 +105,8 @@ def bark_post(Subject, Message, Sckey):
     r = requests.get(url)
 
 def run(name, id, pwd):
-    # time.sleep(random.randint(0, 300))
+#     print('开始随机计时')
+    time.sleep(random.randint(0, 300))
     error = False
     t = 30
     msgout, error = main(name, id, pwd,t)
@@ -130,13 +131,14 @@ def run(name, id, pwd):
 
 if __name__ == '__main__':
     if "SEU_ID_PWD" in os.environ:
-        print("读取环境变量成功")
         SEU_ID_PWD = os.environ["SEU_ID_PWD"]
+        print("读取环境变量成功：", SEU_ID_PWD)
         USER_list = SEU_ID_PWD.split("@")
         NAME_list = list(map(lambda x: x.split("&")[0], USER_list))
         ID_list = list(map(lambda x: x.split("&")[1], USER_list))
         PWD_list = list(map(lambda x: x.split("&")[2], USER_list))
     else:
+        print("读取环境变量失败")
         sys.exit()
         
     if "BARKKEY" in os.environ:
