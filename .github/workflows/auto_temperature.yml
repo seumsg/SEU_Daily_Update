@@ -23,13 +23,8 @@ jobs:
     - name: Run
       env:
         TZ: Asia/Shanghai
-        ID: ${{ secrets.ID }}
-        PASSWORD: ${{ secrets.PASSWORD }}
-        NAME: ${{ secrets.NAME }}
-        KU: ${{ secrets.KU }}
-        SERVERCHAN: ${{ secrets.SERVERCHAN }}
+        SEU_ID_PWD: ${{ secrets.SEU_ID_PWD }}
         BARKKEY: ${{ secrets.BARKKEY }}
-        WEIXINKEY: ${{ secrets.WEIXINKEY }}
       run: |
         bash Init_Building_Dependencies.sh
         python3 auto_temperature.py
