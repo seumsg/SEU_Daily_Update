@@ -22,6 +22,13 @@ def main(name, username, password, t):
         msg += "时间:\t" + str(date_time) + '\n\n'
 
         driver = webdriver.Chrome(executable_path='chromedriver', options=chrome_options)
+        driver.execute_script("window.navigator.geolocation.getCurrentPosition=function(success){"+
+                                    "var position = {\"coords\" : {\"latitude\": \"31.95263\",\"longitude\": \"118.8399\"}};"+
+                                    "success(position);}");
+
+        print(driver.execute_script("var positionStr=\"\";"+
+                                        "window.navigator.geolocation.getCurrentPosition(function(pos){positionStr=pos.coords.latitude+\":\"+pos.coords.longitude});"+
+                                        "return positionStr;"))
 
         url = "http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/index.do?t_s=1583641506865#/dailyReport"
         driver.get(url)
