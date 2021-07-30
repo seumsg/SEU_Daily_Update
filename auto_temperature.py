@@ -90,7 +90,7 @@ def main(name, username, password, t):
         print("点击保存")
         time.sleep(t)
         if "确定数据无误并提交数据" in driver.page_source:
-            driver.find_element_by_xpath('/html/body/div[65]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
+            driver.find_element_by_xpath('//a[contains(text(), "确认")]').click()
             print(name + '\t体温上报成功')
             msg += name + '\t体温上报成功' + '\n\n'
         else:
