@@ -11,6 +11,7 @@ import requests
 import logging
 import random
 import time
+import sys
 from time import sleep
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
