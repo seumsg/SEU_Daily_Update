@@ -23,7 +23,7 @@ jobs:
     - name: Run
       env:
         TZ: Asia/Shanghai
-        SEU_ID_PWD: ${{ secrets.SEU_ID_PWD }}
+        ID_PWD_MODE: ${{ secrets.ID_PWD_MODE }}
         BARKKEY: ${{ secrets.BARKKEY }}
       run: |
         bash Init_Building_Dependencies.sh
