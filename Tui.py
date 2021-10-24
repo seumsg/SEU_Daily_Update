@@ -7,7 +7,7 @@ def server_post(Subject, Message, Sckey):
     r = requests.post(url, data=d)
 
 def bark_post(Subject, Message, Sckey):
-    url = 'https://api.day.app/' + Sckey + '/' + Subject + '/' + Message
+    url = 'http://www.pushplus.plus/send?token='+Sckey+'&title='+Subject+'&content='+Message
     r = requests.get(url)
 
 def kutui_post(Subject, Message, Kutui_key):
