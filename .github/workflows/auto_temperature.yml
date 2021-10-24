@@ -23,7 +23,7 @@ jobs:
     - name: Run
       env:
         TZ: Asia/Shanghai
-        ID_PWD_MODE: ${{ secrets.ID_PWD_MODE }}
+        ID_PSD_MODE: ${{ secrets.ID_PSD_MODE }}
         BARKKEY: ${{ secrets.BARKKEY }}
       run: |
         bash Init_Building_Dependencies.sh
