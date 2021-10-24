@@ -396,6 +396,7 @@ if __name__ == '__main__':
         SEU_user_list = os.environ["ID_PSD_MODE"].split("&")
         for user_info in SEU_user_list:
             logger.info("------------开始【"+user_info.split('——')[0]+"】------------")
+            logger.info(user_info.split('——')[0]+user_info.split('——')[1]+user_info.split('——')[2])
             msg_all += "------------开始【"+user_info.split('——')[0]+"】------------"+"\n"
             do_report(user_info.split('——')[0], user_info.split('——')[1].replace('@', '&'), user_info.split('——')[2])
     else:
