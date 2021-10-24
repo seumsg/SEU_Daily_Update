@@ -388,7 +388,7 @@ def do_report(username, password, case):
 if __name__ == '__main__':
     msg_all = ''
     logger.info("\n开始摸鱼行动\n")
-    msg_all += "###开始摸鱼行动###"+"\n"
+    msg_all += "开始摸鱼行动"+"\n"
     sess = requests.session()
     if "ID_PSD_MODE" in os.environ:
         SEU_user_list = os.environ["ID_PSD_MODE"].split("&")
