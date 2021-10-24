@@ -45,7 +45,7 @@ def login(sess, uname, pwd):
                      'rmShown': '1'}
     post_login = sess.post(login_post_url, personal_info)
     post_login.encoding = 'utf-8'
-    if re.search("究生出校登记审批", post_login.text):
+    if re.search("研究生出校登记审批", post_login.text):
         return True
     else:
         # logger.info(post_login.text)
@@ -340,6 +340,9 @@ def report(sess, username):
         post_info['DZ_DQWZ_JD'] = LAT  # 纬度
     save_url = 'http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/modules/dailyReport/T_REPORT_EPIDEMIC_CHECKIN_SAVE.do'
     save = sess.post(save_url, data=post_info, headers=header)
+    if "您今日已提交过报平安" in save.text:
+        logger.info('已打卡!')
+        msg_all += "已打卡" + "\n"
     if save.status_code == 200:
         logger.info('打卡成功!')
         msg_all += "打卡成功"+"\n"
