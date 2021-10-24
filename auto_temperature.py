@@ -12,6 +12,7 @@ import logging
 import random
 import time
 import sys
+from Tui import *
 from time import sleep
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
@@ -379,12 +380,6 @@ def do_report(username, password, case):
 
     sess.close()
     return
-
-
-
-def bark_post(Subject, Message, Sckey):
-    url = 'https://api.day.app/' + Sckey + '/' + Subject + '/' + Message
-    r = requests.get(url)
 
  
 if __name__ == '__main__':
