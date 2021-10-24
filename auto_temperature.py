@@ -404,5 +404,7 @@ if __name__ == '__main__':
         back_key = os.environ["BARKKEY"]
     else:
         back_key = ""
-
+    
+    logger.info("msg_all = ", msg_all)
+    logger.info("back_key = ", back_key)
     bark_post('摸鱼行动', msg_all, back_key)
