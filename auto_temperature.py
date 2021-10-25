@@ -253,8 +253,8 @@ def askForLeave(sess, username):
         post_info['QJSY'] = "去无线谷科研"
     post_info['SQBH'] = ''
     now_time = datetime.datetime.now()
-    post_info["QJKSRQ"] = (now_time + datetime.timedelta(days=+1)).strftime("%Y-%m-%d 06:00")
-    post_info["QJJSRQ"] = (now_time + datetime.timedelta(days=+1)).strftime("%Y-%m-%d 23:59")
+    post_info["QJKSRQ"] = (now_time + datetime.timedelta(days=+1)).strftime("%Y-%m-%d 07:00")
+    post_info["QJJSRQ"] = (now_time + datetime.timedelta(days=+1)).strftime("%Y-%m-%d 22:59")
 
     save_url = 'http://ehall.seu.edu.cn/ygfw/sys/xsqjappseuyangong/modules/leaveApply/addLeaveApply.do'
     header['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
