@@ -369,6 +369,7 @@ def do_report(username, password, case):
         logger.info("正在进行体温上报>>>>>>")
         msg_all += "正在进行体温上报>>>>>>"+"\n"
         report(sess, username)
+        sleep(10)
         logger.info("正在进行请假>>>>>>")
         msg_all += "正在进行请假>>>>>>"+"\n"
         askForLeave(sess, username)
