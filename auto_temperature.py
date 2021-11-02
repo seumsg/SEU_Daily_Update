@@ -394,6 +394,7 @@ if __name__ == '__main__':
     if "ID_PSD_MODE" in os.environ:
         SEU_user_list = os.environ["ID_PSD_MODE"].split("&")
         for user_info in SEU_user_list:
+            # 一卡通 + 密码 + case(1)
             logger.info("--开始【"+user_info.split('——')[0]+"】--")
             msg_all += "--开始【"+user_info.split('——')[0]+"】--"+"\n"
             do_report(user_info.split('——')[0], user_info.split('——')[1].replace('@', '&'), user_info.split('——')[2])
