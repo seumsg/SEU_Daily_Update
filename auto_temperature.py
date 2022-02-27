@@ -391,10 +391,8 @@ if __name__ == '__main__':
     logger.info("\n开始摸鱼行动\n")
     msg_all += "开始摸鱼行动"+"\n"
     sess = requests.session()
-    print("test_out = ", os.environ)
-    if "ID_PSD_MODE_TEMP" in os.environ:
-        SEU_user_list = os.environ["ID_PSD_MODE_TEMP"].split("&")
-        print("SEU_user_list = ", SEU_user_list)
+    if "ID_PSD_MODE" in os.environ:
+        SEU_user_list = os.environ["ID_PSD_MODE"].split("&")
         for user_info in SEU_user_list:
             # 一卡通 + 密码 + case(1)
             logger.info("--开始【"+user_info.split('——')[0]+"】--")
