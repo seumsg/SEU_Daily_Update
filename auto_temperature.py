@@ -392,7 +392,7 @@ if __name__ == '__main__':
     msg_all += "开始摸鱼行动"+"\n"
     sess = requests.session()
     print("test_out = ", os.environ)
-    if "ID_PSD_MODE_TMP" in os.environ:
+    if "ID_PSD_MODE_TEMP" in os.environ:
         SEU_user_list = os.environ["ID_PSD_MODE_TEMP"].split("&")
         print("SEU_user_list = ", SEU_user_list)
         for user_info in SEU_user_list:
