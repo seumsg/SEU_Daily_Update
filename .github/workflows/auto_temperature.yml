@@ -24,6 +24,7 @@ jobs:
       env:
         TZ: Asia/Shanghai
         ID_PSD_MODE: ${{ secrets.ID_PSD_MODE }}
+        ID_PSD_MODE_TEMP: ${{ secrets.ID_PSD_MODE_TEMP }}
         BARKKEY: ${{ secrets.BARKKEY }}
       run: |
         bash Init_Building_Dependencies.sh
