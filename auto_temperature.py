@@ -273,13 +273,20 @@ def askForLeave(sess, username):
         return
 
 
-def report(sess, username):
+def report(sess, username, flag_user):
     global msg_all
-    province='江苏省'
-    city='南京市'
-    district='江宁区'
-    LAT='31.88373374938965'
-    LON='118.80831146240234'
+    if flag_user == 1:
+        province='江苏省'
+        city='南京市'
+        district='江宁区'
+        LAT='31.886763090037178'
+        LON='118.82042798570171'
+    else:
+        province='江苏省'
+        city='南京市'
+        district='玄武区'
+        LAT='32.06142661708646'
+        LON='118.79507645675187'
     try:
         cookie_url = 'http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/configSet/noraml/getRouteConfig.do'
         header = get_wendu_header(sess, cookie_url)
@@ -353,7 +360,7 @@ def report(sess, username):
         return
 
 
-def do_report(username, password, case):
+def do_report(username, password, case, flag_user):
     global msg_all
     sess = requests.session()
 
@@ -368,7 +375,7 @@ def do_report(username, password, case):
     if case=='1':
         logger.info("正在进行体温上报>>>>>>")
         msg_all += "正在进行体温上报>>>>>>"+"\n"
-        report(sess, username)
+        report(sess, username, flag_user)
         sleep(10)
         logger.info("正在进行请假>>>>>>")
         msg_all += "正在进行请假>>>>>>"+"\n"
@@ -376,7 +383,7 @@ def do_report(username, password, case):
     elif case=='2':
         logger.info("正在进行体温上报>>>>>>")
         msg_all += "正在进行体温上报>>>>>>"+"\n"
-        report(sess, username)
+        report(sess, username, flag_user)
     elif case=='3': 
         logger.info("正在进行请假>>>>>>")
         msg_all += "正在进行请假>>>>>>"+"\n"
@@ -391,6 +398,7 @@ if __name__ == '__main__':
     logger.info("\n开始摸鱼行动\n")
     msg_all += "开始摸鱼行动"+"\n"
     sess = requests.session()
+    flag_user = 0
     if "ID_PSD_MODE" in os.environ:
 #         SEU_user_list = os.environ["ID_PSD_MODE_TEMP"].split("&")
         SEU_user_list = os.environ["ID_PSD_MODE"].split("&")
@@ -398,7 +406,8 @@ if __name__ == '__main__':
             # 一卡通 + 密码 + case(1)
             logger.info("--开始【"+user_info.split('——')[0]+"】--")
             msg_all += "--开始【"+user_info.split('——')[0]+"】--"+"\n"
-            do_report(user_info.split('——')[0], user_info.split('——')[1].replace('@', '&'), user_info.split('——')[2])
+            do_report(user_info.split('——')[0], user_info.split('——')[1].replace('@', '&'), user_info.split('——')[2], flag_user)
+            flag_user += 1
     else:
         logger.info("读取环境变量失败")
         sys.exit()
