@@ -20,7 +20,10 @@ logger = logging.getLogger(__name__)
 # 登陆
 def login(sess, uname, pwd):
     login_url = 'http://ehall.seu.edu.cn/ygfw/sys/xsqjappseuyangong/*default/index.do'
-    get_login = sess.get(login_url)
+    headers = {"Content-Type": "application/x-www-form-urlencoded",
+               "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"}
+    sess.headers = headers
+    get_login = sess.get(login_url, headers=headers)
     get_login.encoding = 'utf-8'
     lt = re.search('name="lt" value="(.*?)"', get_login.text).group(1)
     salt = re.search('id="pwdDefaultEncryptSalt" value="(.*?)"', get_login.text).group(1)
@@ -43,7 +46,7 @@ def login(sess, uname, pwd):
                      'execution': execution,
                      '_eventId': 'submit',
                      'rmShown': '1'}
-    post_login = sess.post(login_post_url, personal_info)
+    post_login = sess.post(login_post_url, personal_info, headers=headers)
     post_login.encoding = 'utf-8'
     if re.search("研究生出校登记审批", post_login.text):
         return True
@@ -278,15 +281,16 @@ def report(sess, username, flag_user):
     if flag_user == 0:
         province='江苏省'
         city='南京市'
-        district='江宁区'
-        LAT='31.886763090037178'
-        LON='118.82042798570171'
-    else:
-        province='江苏省'
-        city='南京市'
         district='玄武区'
         LAT='32.06142661708646'
         LON='118.79507645675187'
+   # 第一个是四牌楼的，剩下的都是九龙湖的
+    else:
+        province='江苏省'
+        city='南京市'
+        district='江宁区'
+        LAT='31.886763090037178'
+        LON='118.82042798570171'
     try:
         cookie_url = 'http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/configSet/noraml/getRouteConfig.do'
         header = get_wendu_header(sess, cookie_url)
@@ -406,7 +410,7 @@ if __name__ == '__main__':
             # 一卡通 + 密码 + case(1)
             logger.info("--开始【"+user_info.split('——')[0]+"】--")
             msg_all += "--开始【"+user_info.split('——')[0]+"】--"+"\n"
-            do_report(user_info.split('——')[0], user_info.split('——')[1].replace('@', '&'), user_info.split('——')[2], flag_user)
+            do_report(user_info.split('——')[0], user_info.split('——')[1].replace('@', '&'), user_info.split('——')[2])
             flag_user += 1
     else:
         logger.info("读取环境变量失败")
