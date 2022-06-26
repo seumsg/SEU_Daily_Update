@@ -275,7 +275,7 @@ def askForLeave(sess, username):
 
 def report(sess, username, flag_user):
     global msg_all
-    if flag_user == 1:
+    if flag_user == 0:
         province='江苏省'
         city='南京市'
         district='江宁区'
