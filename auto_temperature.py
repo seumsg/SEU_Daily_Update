@@ -410,7 +410,7 @@ if __name__ == '__main__':
             # 一卡通 + 密码 + case(1)
             logger.info("--开始【"+user_info.split('——')[0]+"】--")
             msg_all += "--开始【"+user_info.split('——')[0]+"】--"+"\n"
-            do_report(user_info.split('——')[0], user_info.split('——')[1].replace('@', '&'), user_info.split('——')[2])
+            do_report(user_info.split('——')[0], user_info.split('——')[1].replace('@', '&'), user_info.split('——')[2], flag_user)
             flag_user += 1
     else:
         logger.info("读取环境变量失败")
