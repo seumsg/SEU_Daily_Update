@@ -2,7 +2,7 @@ name: SEU Auto Temperature
 on:
   schedule:
     - cron: '30 01 * * *'
-    - cron: '15 02 * * *'
+    - cron: '15 08 * * *'
     # cron表达式，时区是UTC时间，比我们早8小时，如上所表示的是每天UTC时间的22点30分整， 北京时间的6点30分（24小时制） 是分钟+时钟的顺序
     # 可在此网站查询UTC时间和北京时间的换算关系 https://datetime360.com/cn/utc-beijing-time/
   watch:
@@ -12,7 +12,7 @@ on:
 
 jobs:
   Temperature:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     if: github.event.repository.owner.id == github.event.sender.id
     
     steps:
