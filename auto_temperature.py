@@ -278,13 +278,13 @@ def askForLeave(sess, username):
 
 def report(sess, username, flag_user):
     global msg_all
-    if flag_user == 0:
+    if flag_user < 2:
         province='江苏省'
         city='南京市'
         district='玄武区'
         LAT='32.06142661708646'
         LON='118.79507645675187'
-   # 第一个是四牌楼的，剩下的都是九龙湖的
+   # 前2个是四牌楼的，剩下的都是九龙湖的
     else:
         province='江苏省'
         city='南京市'
